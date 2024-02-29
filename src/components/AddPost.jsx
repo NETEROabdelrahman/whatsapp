@@ -1,4 +1,4 @@
-import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter,Textarea, useDisclosure} from "@nextui-org/react";
+import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter,Textarea,input, useDisclosure} from "@nextui-org/react";
 import { MdInsertPhoto, MdOutlineSlowMotionVideo  } from "react-icons/md";
 import { CiLink } from "react-icons/ci";
 
@@ -6,7 +6,7 @@ const AddPost = ({ createPost, setCreatePost }) => {
     const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
     return (
-        <Modal hideCloseButton className=" bg-[#ffffffad]" size="2xl" isOpen={createPost} onOpenChange={onOpenChange}>
+        <Modal backdrop="blur"  hideCloseButton className=" bg-[#ffffffad]" size="5xl" isOpen={createPost} onOpenChange={onOpenChange}>
             <ModalContent  >
                 {(onClose) => (
                     <>
@@ -16,15 +16,16 @@ const AddPost = ({ createPost, setCreatePost }) => {
                         </ModalHeader>
                         <ModalBody>
                             <div className="bg-violet-100 rounded-lg p-3">
-                                <Textarea
-                                    isRequired
+                                <input
+                                    //isRequired
                                     size="lg"
+                                    radius="lg"
                                     placeholder="you would love to create a post here"
                                     type="text"
-                                    className="bg-violet-100 rounded border-none "
+                                    className="bg-white rounded border-none outline-none h-[200px] w-full text-center"
                                 />
-                                <div className="flex flex-row items-center gap-4 p-2 mt-1">
-                                    <span className="flex flex-row items-center justify-center gap-2">
+                                <div className="flex flex-row items-center gap-4 p-2 mt-1 ">
+                                    <span className="flex flex-row items-center justify-center gap-2 ">
                                         <MdInsertPhoto color="indigo" />
                                         <p>add photo</p>
                                     </span>
@@ -40,8 +41,8 @@ const AddPost = ({ createPost, setCreatePost }) => {
                             </div>
                         </ModalBody>
                         <ModalFooter className="flex flex-row justify-between text-slate-700">
-                            <button className="cursor-pointer border-none bg-purple-700 text-white rounded p-2 w-[50%]">Discard</button>
-                            <button className="cursor-pointer border-purple-700 text-purple-700 rounded p-2 w-[50%]">Publish</button>
+                            <button onClick={() => setCreatePost(false)} className="cursor-pointer border-purple-700 text-purple-700 rounded p-2 w-[40%]">Discard</button>
+                            <button className="cursor-pointer border-none bg-purple-700 text-white rounded p-2 w-[40%]">Publish</button>
                         </ModalFooter>
                     </>
                 )}
